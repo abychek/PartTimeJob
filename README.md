@@ -1,3 +1,1 @@
-# PartTimeJob
-
-a [Sails](http://sailsjs.org) application
+It's my project
