@@ -1,0 +1,73 @@
+<form id="get" method="post" action="/contract"></form>
+<form id="complete" method="post" action="/contract/complete"></form>
+<div class="container-fluid">
+  <div class="col-lg-1 pull-right">
+    <a href="/contract/new" role="button" class="btn"><span class="glyphicon glyphicon-plus"></span></a>
+  </div>
+  <div class="col-lg-12 pull-right">
+    <p class="table-bordered"></p>
+  </div>
+
+  <% for(var i = 0; i < contracts.length; i++){ %>
+  <% if(contracts[i].status == 'free'){ %>
+  <div class="col-lg-11">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= contracts[i].title %></h3>
+      </div>
+      <div class="panel-body">
+        <%= contracts[i].description %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-1">
+    <button class="btn" type="submit" form="get" name="id" value="<%= contracts[i].id %>">
+      <span class="glyphicon glyphicon-folder-open"></span>
+    </button>
+    <button class="btn" type="submit" form="complete" name="id" value="<%= contracts[i].id %>">
+      <span class="glyphicon glyphicon-ok"></span>
+    </button>
+  </div>
+  <% } %>
+  <% if(contracts[i].status == 'engaged'){ %>
+  <div class="col-lg-11">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= contracts[i].title %></h3>
+      </div>
+      <div class="panel-body">
+        <%= contracts[i].description %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-1">
+    <button class="btn" type="submit" form="get" name="id" value="<%= contracts[i].id %>">
+      <span class="glyphicon glyphicon-folder-open"></span>
+    </button>
+    <button class="btn" type="submit" form="complete" name="id" value="<%= contracts[i].id %>">
+      <span class="glyphicon glyphicon-ok"></span>
+    </button>
+  </div>
+  <% } %>
+  <% if(contracts[i].status == 'closed'){ %>
+  <div class="col-lg-11">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= contracts[i].title %></h3>
+      </div>
+      <div class="panel-body">
+        <%= contracts[i].description %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-1">
+    <button class="btn" type="submit" form="get" name="id" value="<%= contracts[i].id %>">
+      <span class="glyphicon glyphicon-folder-open"></span>
+    </button>
+    <button class="btn" type="submit" form="complete" name="id" value="<%= contracts[i].id %>">
+      <span class="glyphicon glyphicon-ok"></span>
+    </button>
+  </div>
+  <% } %>
+  <% } %>
+</div>

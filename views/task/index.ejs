@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="col-lg-1 pull-right">
+    <a href="/tasks/new" role="button" class="btn"><span class="glyphicon glyphicon-plus"></span></a>
+  </div>
+  <div class="col-lg-12 pull-right">
+    <p class="table-bordered"></p>
+  </div>
+  <div class="col-lg-12">
+    <% for(var i = 0; i < contracts.length; i++){ %>
+    <% if(tasks[i].status == 'request'){ %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <%= contracts[i].title %>
+      </div>
+      <div class="panel-body">
+        <%= contracts[i].description %>
+      </div>
+    </div>
+    <% }else{ %>
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <%= contracts[i].title %>
+      </div>
+      <div class="panel-body">
+        <%= contracts[i].description %>
+      </div>
+    </div>
+    <% } %>
+    <% } %>
+  </div>
+</div>

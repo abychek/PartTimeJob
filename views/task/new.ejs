@@ -1,0 +1,17 @@
+<form id="picker" method="post" action="/tasks/create"></form>
+<div class="container-fluid">
+  <% for(var i = 0; i < contracts.length; i++){ %>
+  <div class="col-lg-11">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= contracts[i].title %></div>
+      <div class="panel-body"><%= contracts[i].description %></div>
+      <div class="panel-footer">By: <%= owners[i].username %></div>
+    </div>
+  </div>
+  <div class="col-lg-1">
+    <button class="btn" type="submit" form="picker" name="id" value="<%= contracts[i].id %>">
+      <span class="glyphicon glyphicon-hand-left"></span>
+    </button>
+  </div>
+  <% } %>
+</div>

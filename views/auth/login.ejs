@@ -1,0 +1,42 @@
+<% if (errors) { %>
+<% errors.forEach(function (error) { %>
+<%= __(error) %>
+<% }) %>
+<% } %>
+
+<div class="col-lg-12">
+  <form class="form-horizontal" role="form" action="/auth/local" method="post">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Email or Username</label>
+
+      <div class="col-lg-8">
+        <input type="text" class="form-control" name="identifier" placeholder="Email or Username">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Password</label>
+
+      <div class="col-lg-8">
+        <input type="password" class="form-control" name="password" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-8 col-lg-offset-2">
+        <button type="submit" class="btn btn-default btn-success">Sign in</button>
+        <a role="button" class="btn btn-default" href="/register">Sign Up</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<% if (Object.keys(providers).length) { %>
+<div class="col-lg-12 text-center">
+  <h4>You can also use one of these...</h4>
+</div>
+<% Object.keys(providers).forEach(function (key) { %>
+<div class="col-lg-12 text-center">
+  <a href="/auth/<%= providers[key].slug %>" class="btn btn-primary" role="button"><%= providers[key].name %></a>
+</div>
+<% }) %>
+<% } %>

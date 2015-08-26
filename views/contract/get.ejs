@@ -1,0 +1,37 @@
+<form id="approve" method="post" action="/contract/approve">
+  <input type="hidden" name="contractId" value="<%= contract.id %>">
+</form>
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= contract.title %></div>
+    <div class="panel-body"><%= contract.description %></div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <tr>
+        <td></td>
+        <td>Username</td>
+        <td>Phone</td>
+        <td>Email</td>
+      </tr>
+      <% for(var i = 0; i < candidates.length; i++){ %>
+      <tr>
+        <td class="col-lg-1">
+          <button form="approve" class="btn" name="candidateId" value="<%= candidates[i].id %>">
+            <span class="glyphicon glyphicon-hand-right"></span>
+          </button>
+        </td>
+        <td class="col-lg-2">
+          <%= candidates[i].username %>
+        </td>
+        <td>
+          <%= candidates[i].phone %>
+        </td>
+        <td>
+          <%= candidates[i].email %>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+  </div>
+</div>

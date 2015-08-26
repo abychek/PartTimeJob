@@ -1,0 +1,69 @@
+<% if (errors) { %>
+<% errors.forEach(function (error) { %>
+<%= __(error) %>
+<% }) %>
+<% } %>
+
+<form id="register" class="form-horizontal" role="form" action="/auth/local/register" method="post">
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Username</label>
+
+    <div class="col-lg-8">
+      <input type="text" class="form-control" name="username" placeholder="Username">
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Password</label>
+
+    <div class="col-lg-8">
+      <input type="password" class="form-control" name="password" placeholder="Password">
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Email</label>
+
+    <div class="col-lg-8">
+      <input type="text" class="form-control" name="email" placeholder="Email">
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">Phone</label>
+
+    <div class="col-lg-8">
+      <input type="text" class="form-control" name="phone" placeholder="Phone">
+
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-8 col-lg-offset-2">
+      <button id="button" class="btn btn-default btn-success" type="button">Sign up</button>
+
+    </div>
+  </div>
+  <input id="address" type="hidden" name="address">
+</form>
+
+<script type="text/javascript">
+  $("#button").click(function () {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      $.post(
+        'https://maps.googleapis.com/maps/api/geocode/json?bounds='
+        + position.coords.latitude
+        + ','
+        + position.coords.longitude
+        + '|'
+        + position.coords.latitude
+        + ','
+        + position.coords.longitude
+        + '&key=AIzaSyCxDsZLeZOvVR12H3q3QsDQDrU8s_7tb8k',
+        function (success) {
+          $("#address").val(success.results[0]['formatted_address']);
+          $("#register").submit()
+        }
+      );
+    });
+  });
+</script>
