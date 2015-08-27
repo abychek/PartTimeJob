@@ -61,7 +61,10 @@ module.exports.routes = {
   'get /contracts': 'ContractController.main',
 
   'get /notifications': 'NotificationController.main',
-  'post /notifications/hide': 'NotificationController.hide'
+  'post /notifications/hide': 'NotificationController.hide',
+
+  'get /password/edit': 'PasswordEditController.main',
+  'post /password/edit': 'PasswordEditController.update'
 
   /***************************************************************************
   *                                                                          *
